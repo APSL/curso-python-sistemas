@@ -4,3 +4,4 @@
 *.python-version
 .vscode
 __pycache__
+checkurl.egg-info
