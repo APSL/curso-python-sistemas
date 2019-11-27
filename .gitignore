@@ -1,0 +1,6 @@
+*.swp
+*.pem
+*.pyc
+*.python-version
+.vscode
+__pycache__
