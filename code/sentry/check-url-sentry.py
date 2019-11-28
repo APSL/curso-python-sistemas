@@ -25,6 +25,8 @@ def test_stuff(url, warn=10, crit=20):
     try:
         r = requests.get(url, timeout=1)
     except Exception as e:
+        # We capture exception in order to send an UNKNOWN to nagios.
+        # but we send information to sentry, with warning level instead of critical
         with push_scope() as scope:
             scope.set_tag("tested-url", url)
             scope.level = 'warning'
