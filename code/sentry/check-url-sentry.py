@@ -28,7 +28,6 @@ def test_stuff(url, warn=10, crit=20):
         with push_scope() as scope:
             scope.set_tag("tested-url", url)
             scope.level = 'warning'
-            # will be tagged with my-tag="my value"
             capture_exception(e)
         return("UNKNOWN",str(e))
     r = requests.get(url, timeout=1)
