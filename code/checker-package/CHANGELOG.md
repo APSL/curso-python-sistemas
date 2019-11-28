@@ -1,5 +1,9 @@
 #  Changelog for checkurl
 
+## [0.1.2] - 2019-11-28 change nagios labels
+### Changed
+- nagios labels
+
 ## [0.1.0] - 2019-11-28 parameter support 
 ### Added
 - Parameter support for thresholds
