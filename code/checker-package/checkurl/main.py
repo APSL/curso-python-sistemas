@@ -4,6 +4,8 @@ import click
 from checkurl import __VERSION__
 from checkurl.checker import testurl
 from checkurl.nagios import  nagios_return
+import sentry_sdk
+from sentry_sdk import configure_scope
 
 
 def print_version(ctx, param, value):
@@ -19,6 +21,13 @@ def print_version(ctx, param, value):
 @click.argument('url', required=True)
 def cli(url, warning, critical):
     """Checks URL as NRPE plugin"""
+    sentry_sdk.init("https://15449db93e66418b815382c59b154120@sentry.io/1838405")
+    
+    with configure_scope() as scope:
+        scope.user = {"bercab": "bercab@example.com"}
+        scope.set_tag("app", "checkurl")
+
+
     code, msg = testurl(url, warning, critical)
     nagios_return(code, msg)
 

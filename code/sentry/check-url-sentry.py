@@ -54,13 +54,14 @@ def test_stuff(url, warn=10, crit=20):
 def main(url, critical, warning):
     sentry_dsn = config("SENTRY_DSN")
     sentry_sdk.init(sentry_dsn)
+    #sentry_sdk.init("https://15449db93e66418b815382c59b154120@sentry.io/1838405")
 
 
     click.echo(f"testing {url}")
     with configure_scope() as scope:
         scope.set_tag("my-tag", "my value")
         scope.user = {'id': "bcabezas2", 'email': 'bcabezas2@example.com'}
-    raise Exception("cursopy")
+
     code, msg = test_stuff(url=url, crit=critical, warn=warning)
     nagios_return(code, msg)
 
