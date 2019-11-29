@@ -59,7 +59,8 @@ def main(url, critical, warning):
     click.echo(f"testing {url}")
     with configure_scope() as scope:
         scope.set_tag("my-tag", "my value")
-        scope.user = {'id': 42, 'email': 'john.doe@example.com'}
+        scope.user = {'id': "bcabezas2", 'email': 'bcabezas2@example.com'}
+    raise Exception("cursopy")
     code, msg = test_stuff(url=url, crit=critical, warn=warning)
     nagios_return(code, msg)
 
